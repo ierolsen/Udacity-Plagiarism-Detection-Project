@@ -27,11 +27,8 @@ class BinaryClassifier(nn.Module):
         super(BinaryClassifier, self).__init__()
 
         self.fc1 = nn.Linear(input_features, hidden_dim)
-        self.fc2 = nn.Linear(hidden_dim, hidden_dim*2)
-        self.fc3 = nn.Linear(hidden_dim*4, hidden_dim*4)
-        self.fc4 = nn.Linear(hidden_dim*4, hidden_dim*2)
-        self.fc5 = nn.Linear(hidden_dim*2, output_dim)
-        self.drop = nn.Dropout(0.4)
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+        self.drop = nn.Dropout(0.3)
         self.sigmoid = nn.Sigmoid()
 
     
@@ -45,16 +42,9 @@ class BinaryClassifier(nn.Module):
         
         x = self.fc1(x)
         x = F.relu(x)
+        x = self.drop(x)
         x = self.fc2(x)
-        x = F.relu(x)
-        x = self.fc3(x)
-        x = F.relu(x)
-        x = self.drop(x)
-        x = self.fc4(x)
-        x = F.relu(x)
-        x = self.drop(x)
-        x = self.fc5(x)
-        x = self.sigmodi()
+        x = self.sigmoid(x)
         
         return x
     
