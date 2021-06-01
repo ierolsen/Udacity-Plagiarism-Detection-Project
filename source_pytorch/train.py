@@ -145,7 +145,7 @@ if __name__ == '__main__':
 
     ## TODO: Define an optimizer and loss function for training
     optimizer = optim.Adam(model.parameters())
-    criterion = nn.BCELoss()
+    criterion = torch.nn.BCELoss()
 
     # Trains the model (given line of code, which calls the above training function)
     train(model, train_loader, args.epochs, criterion, optimizer, device)
