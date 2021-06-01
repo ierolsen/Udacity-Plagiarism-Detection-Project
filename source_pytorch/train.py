@@ -156,8 +156,8 @@ if __name__ == '__main__':
     with open(model_info_path, 'wb') as f:
         model_info = {
             'input_features': args.input_features,
-            'hidden_dim': <add_arg>,
-            'output_dim': <add_arg>,
+            'hidden_dim': <args.hidden_dim>,
+            'output_dim': <args.output_dim>,
         }
         torch.save(model_info, f)
         
